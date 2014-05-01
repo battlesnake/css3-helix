@@ -1,0 +1,270 @@
+
+	html,
+	body {
+		overflow: hidden;
+	}
+
+	h1 {
+		font-family: sans-serif;
+	}
+	
+
+		@-webkit-keyframes flipA {
+		
+0% { left: 50.00000000000000000000%; right: 50.00000000000000000000%; -webkit-transform: skew(0, 90.00000000000000000000deg); }
+50% { left: 50.00000000000000000000%; right: 50.00000000000000000000%; -webkit-transform: skew(0, 90.00000000000000000000deg); }
+1.0% { left: 34.54915028125262879550%; right: 34.54915028125262879550%; -webkit-transform: skew(0, 62.18847050625473183190deg); }
+49.0% { left: 34.54915028125262879550%; right: 34.54915028125262879550%; -webkit-transform: skew(0, 62.18847050625473183190deg); }
+2.0% { left: 20.61073738537634354250%; right: 20.61073738537634354250%; -webkit-transform: skew(0, 37.09932729367741837650deg); }
+48.0% { left: 20.61073738537634354250%; right: 20.61073738537634354250%; -webkit-transform: skew(0, 37.09932729367741837650deg); }
+3.0% { left: 9.54915028125262879550%; right: 9.54915028125262879550%; -webkit-transform: skew(0, 17.18847050625473183190deg); }
+47.0% { left: 9.54915028125262879550%; right: 9.54915028125262879550%; -webkit-transform: skew(0, 17.18847050625473183190deg); }
+4.0% { left: 2.44717418524232139450%; right: 2.44717418524232139450%; -webkit-transform: skew(0, 4.40491353343617851010deg); }
+46.0% { left: 2.44717418524232139450%; right: 2.44717418524232139450%; -webkit-transform: skew(0, 4.40491353343617851010deg); }
+5.0% { left: 0%; right: 0%; -webkit-transform: skew(0, 0deg); }
+45.0% { left: 0%; right: 0%; -webkit-transform: skew(0, 0deg); }
+
+			100% { left: 50%; right: 50%;}
+			75% { -webkit-transform: skew(0, 90deg); }
+		}
+		
+
+		@-webkit-keyframes flipB {
+		
+0% { left: 50.00000000000000000000%; right: 50.00000000000000000000%; -webkit-transform: skew(0, -90.00000000000000000000deg); }
+50% { left: 50.00000000000000000000%; right: 50.00000000000000000000%; -webkit-transform: skew(0, -90.00000000000000000000deg); }
+1.0% { left: 34.54915028125262879550%; right: 34.54915028125262879550%; -webkit-transform: skew(0, -62.18847050625473183190deg); }
+49.0% { left: 34.54915028125262879550%; right: 34.54915028125262879550%; -webkit-transform: skew(0, -62.18847050625473183190deg); }
+2.0% { left: 20.61073738537634354250%; right: 20.61073738537634354250%; -webkit-transform: skew(0, -37.09932729367741837650deg); }
+48.0% { left: 20.61073738537634354250%; right: 20.61073738537634354250%; -webkit-transform: skew(0, -37.09932729367741837650deg); }
+3.0% { left: 9.54915028125262879550%; right: 9.54915028125262879550%; -webkit-transform: skew(0, -17.18847050625473183190deg); }
+47.0% { left: 9.54915028125262879550%; right: 9.54915028125262879550%; -webkit-transform: skew(0, -17.18847050625473183190deg); }
+4.0% { left: 2.44717418524232139450%; right: 2.44717418524232139450%; -webkit-transform: skew(0, -4.40491353343617851010deg); }
+46.0% { left: 2.44717418524232139450%; right: 2.44717418524232139450%; -webkit-transform: skew(0, -4.40491353343617851010deg); }
+5.0% { left: 0%; right: 0%; -webkit-transform: skew(0, 0deg); }
+45.0% { left: 0%; right: 0%; -webkit-transform: skew(0, 0deg); }
+
+			100% { left: 50%; right: 50%;}
+			75% { -webkit-transform: skew(0, -90deg); }
+		}
+		
+
+	.helix {
+		width: 604px;
+		margin: 40px;
+		overflow: visible;
+		max-width: 604px;
+	}
+
+	.helix>.row {
+		position: relative;
+		height: 26px;
+	}
+
+	.helix>.row>.img {
+		position: absolute;
+		height: 26px;
+		background-size: 100% 400px;
+		background-repeat: no-repeat no-repeat;
+		border-radius: 4px;
+	}
+
+	.helix>.row>.img:nth-child(1) {
+		background-image: url('imga.jpg');
+	}
+
+	.helix>.row>.img:nth-child(2) {
+		background-image: url('imgb.jpg');
+	}
+
+	.helix>.row:first-child>.img {
+		border-top-left-radius: 6px;
+		border-top-right-radius: 6px;
+	}
+
+	.helix>.row:last-child>.img {
+		border-bottom-right-radius: 6px;
+		border-bottom-left-radius: 6px;
+	}
+
+	
+
+	.helix>.row:nth-child(1)>.img {
+		background-position: 0 -0px;
+	}
+
+	.helix>.row:nth-child(1)>.img:nth-child(1) {
+		-webkit-animation: flipA 6000ms linear 30ms infinite;
+	}
+	.helix>.row:nth-child(1)>.img:nth-child(2) {
+		-webkit-animation: flipB 6000ms linear 3030ms infinite;
+	}
+	
+
+	.helix>.row:nth-child(2)>.img {
+		background-position: 0 -26px;
+	}
+
+	.helix>.row:nth-child(2)>.img:nth-child(1) {
+		-webkit-animation: flipA 6000ms linear 60ms infinite;
+	}
+	.helix>.row:nth-child(2)>.img:nth-child(2) {
+		-webkit-animation: flipB 6000ms linear 3060ms infinite;
+	}
+	
+
+	.helix>.row:nth-child(3)>.img {
+		background-position: 0 -52px;
+	}
+
+	.helix>.row:nth-child(3)>.img:nth-child(1) {
+		-webkit-animation: flipA 6000ms linear 90ms infinite;
+	}
+	.helix>.row:nth-child(3)>.img:nth-child(2) {
+		-webkit-animation: flipB 6000ms linear 3090ms infinite;
+	}
+	
+
+	.helix>.row:nth-child(4)>.img {
+		background-position: 0 -78px;
+	}
+
+	.helix>.row:nth-child(4)>.img:nth-child(1) {
+		-webkit-animation: flipA 6000ms linear 120ms infinite;
+	}
+	.helix>.row:nth-child(4)>.img:nth-child(2) {
+		-webkit-animation: flipB 6000ms linear 3120ms infinite;
+	}
+	
+
+	.helix>.row:nth-child(5)>.img {
+		background-position: 0 -104px;
+	}
+
+	.helix>.row:nth-child(5)>.img:nth-child(1) {
+		-webkit-animation: flipA 6000ms linear 150ms infinite;
+	}
+	.helix>.row:nth-child(5)>.img:nth-child(2) {
+		-webkit-animation: flipB 6000ms linear 3150ms infinite;
+	}
+	
+
+	.helix>.row:nth-child(6)>.img {
+		background-position: 0 -130px;
+	}
+
+	.helix>.row:nth-child(6)>.img:nth-child(1) {
+		-webkit-animation: flipA 6000ms linear 180ms infinite;
+	}
+	.helix>.row:nth-child(6)>.img:nth-child(2) {
+		-webkit-animation: flipB 6000ms linear 3180ms infinite;
+	}
+	
+
+	.helix>.row:nth-child(7)>.img {
+		background-position: 0 -156px;
+	}
+
+	.helix>.row:nth-child(7)>.img:nth-child(1) {
+		-webkit-animation: flipA 6000ms linear 210ms infinite;
+	}
+	.helix>.row:nth-child(7)>.img:nth-child(2) {
+		-webkit-animation: flipB 6000ms linear 3210ms infinite;
+	}
+	
+
+	.helix>.row:nth-child(8)>.img {
+		background-position: 0 -182px;
+	}
+
+	.helix>.row:nth-child(8)>.img:nth-child(1) {
+		-webkit-animation: flipA 6000ms linear 240ms infinite;
+	}
+	.helix>.row:nth-child(8)>.img:nth-child(2) {
+		-webkit-animation: flipB 6000ms linear 3240ms infinite;
+	}
+	
+
+	.helix>.row:nth-child(9)>.img {
+		background-position: 0 -208px;
+	}
+
+	.helix>.row:nth-child(9)>.img:nth-child(1) {
+		-webkit-animation: flipA 6000ms linear 270ms infinite;
+	}
+	.helix>.row:nth-child(9)>.img:nth-child(2) {
+		-webkit-animation: flipB 6000ms linear 3270ms infinite;
+	}
+	
+
+	.helix>.row:nth-child(10)>.img {
+		background-position: 0 -234px;
+	}
+
+	.helix>.row:nth-child(10)>.img:nth-child(1) {
+		-webkit-animation: flipA 6000ms linear 300ms infinite;
+	}
+	.helix>.row:nth-child(10)>.img:nth-child(2) {
+		-webkit-animation: flipB 6000ms linear 3300ms infinite;
+	}
+	
+
+	.helix>.row:nth-child(11)>.img {
+		background-position: 0 -260px;
+	}
+
+	.helix>.row:nth-child(11)>.img:nth-child(1) {
+		-webkit-animation: flipA 6000ms linear 330ms infinite;
+	}
+	.helix>.row:nth-child(11)>.img:nth-child(2) {
+		-webkit-animation: flipB 6000ms linear 3330ms infinite;
+	}
+	
+
+	.helix>.row:nth-child(12)>.img {
+		background-position: 0 -286px;
+	}
+
+	.helix>.row:nth-child(12)>.img:nth-child(1) {
+		-webkit-animation: flipA 6000ms linear 360ms infinite;
+	}
+	.helix>.row:nth-child(12)>.img:nth-child(2) {
+		-webkit-animation: flipB 6000ms linear 3360ms infinite;
+	}
+	
+
+	.helix>.row:nth-child(13)>.img {
+		background-position: 0 -312px;
+	}
+
+	.helix>.row:nth-child(13)>.img:nth-child(1) {
+		-webkit-animation: flipA 6000ms linear 390ms infinite;
+	}
+	.helix>.row:nth-child(13)>.img:nth-child(2) {
+		-webkit-animation: flipB 6000ms linear 3390ms infinite;
+	}
+	
+
+	.helix>.row:nth-child(14)>.img {
+		background-position: 0 -338px;
+	}
+
+	.helix>.row:nth-child(14)>.img:nth-child(1) {
+		-webkit-animation: flipA 6000ms linear 420ms infinite;
+	}
+	.helix>.row:nth-child(14)>.img:nth-child(2) {
+		-webkit-animation: flipB 6000ms linear 3420ms infinite;
+	}
+	
+
+	.helix>.row:nth-child(15)>.img {
+		background-position: 0 -364px;
+	}
+
+	.helix>.row:nth-child(15)>.img:nth-child(1) {
+		-webkit-animation: flipA 6000ms linear 450ms infinite;
+	}
+	.helix>.row:nth-child(15)>.img:nth-child(2) {
+		-webkit-animation: flipB 6000ms linear 3450ms infinite;
+	}
+	

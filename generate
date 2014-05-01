@@ -1,0 +1,143 @@
+#!/bin/bash
+
+ROWS=15
+IMGW=604
+IMGH=400
+ROWDELAY=30
+PERIOD=6000
+SHOWFRAC=0.8
+
+function html {
+
+	echo '<!doctype html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<center>
+	<h1>Helix animation</h1>
+	<div class="helix">'
+
+	for I in `seq 1 $ROWS`
+	do
+
+		echo '
+		<div class="row">
+			<div class="img"></div>
+			<div class="img"></div>
+		</div>'
+
+	done
+
+	echo '
+	</div>
+</center>
+</body>
+</html>'
+
+}
+
+function css {
+
+	echo "
+	html,
+	body {
+		overflow: hidden;
+	}
+
+	h1 {
+		font-family: sans-serif;
+	}
+	"
+
+	function keys {
+		local SUF=$1 ANG=$2
+		echo "
+		@-webkit-keyframes flip${SUF} {
+		"
+
+		for J in `seq 0 5`
+		do
+			SIN=`echo "1 - s($J * 4*a(1) / 10)" | bc -l`
+			XTRA="-webkit-transform: skew(0, `echo "${SIN} * ${ANG}" | bc -l`deg);"
+			SIZE=`echo "50 * $SIN" | bc -l`
+			P1=`echo "$J * 5 * (1 - $SHOWFRAC)" | bc -l`
+			P2=`echo "50 - ${P1}" | bc -l`
+			echo "${P1}% { left: ${SIZE}%; right: ${SIZE}%; $XTRA }"
+			echo "${P2}% { left: ${SIZE}%; right: ${SIZE}%; $XTRA }"
+		done
+
+		echo "
+			100% { left: 50%; right: 50%;}
+			75% { -webkit-transform: skew(0, ${ANG}deg); }
+		}
+		"
+	}
+
+	keys A "90"
+	keys B "-90"
+
+	echo "
+	.helix {
+		width: ${IMGW}px;
+		margin: 40px;
+		overflow: visible;
+		max-width: ${IMGW}px;
+	}
+
+	.helix>.row {
+		position: relative;
+		height: $(( IMGH / ROWS ))px;
+	}
+
+	.helix>.row>.img {
+		position: absolute;
+		height: $(( IMGH / ROWS ))px;
+		background-size: 100% ${IMGH}px;
+		background-repeat: no-repeat no-repeat;
+		border-radius: 4px;
+	}
+
+	.helix>.row>.img:nth-child(1) {
+		background-image: url('imga.jpg');
+	}
+
+	.helix>.row>.img:nth-child(2) {
+		background-image: url('imgb.jpg');
+	}
+
+	.helix>.row:first-child>.img {
+		border-top-left-radius: 6px;
+		border-top-right-radius: 6px;
+	}
+
+	.helix>.row:last-child>.img {
+		border-bottom-right-radius: 6px;
+		border-bottom-left-radius: 6px;
+	}
+
+	"
+
+	for I in `seq 1 $ROWS`
+	do
+		echo "
+	.helix>.row:nth-child($I)>.img {
+		background-position: 0 -$(( (IMGH / ROWS) * (I - 1) ))px;
+	}
+
+	.helix>.row:nth-child($I)>.img:nth-child(1) {
+		-webkit-animation: flipA ${PERIOD}ms linear $(( I * ROWDELAY ))ms infinite;
+	}
+	.helix>.row:nth-child($I)>.img:nth-child(2) {
+		-webkit-animation: flipB ${PERIOD}ms linear $(( I * ROWDELAY + (PERIOD / 2) ))ms infinite;
+	}
+	"
+	done
+
+}
+
+html > index.html
+
+css > style.css
