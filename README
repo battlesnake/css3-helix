@@ -1,0 +1,21 @@
+HELIX CSS IMAGE SWITCHER
+
+  by Mark K Cowan
+
+  hackology.co.uk
+
+  mark@battlesnake.co.uk
+
+
+
+The important files here are the 'generate' script and the two images.  The script requires a modern version of bash, so bad luck Mac guys...
+
+The images should be the same size and the sizes should be specified in the 'generate' script.
+
+Configure the head of the 'generate' script to your liking, then execute it to generate the 'index.html' and 'style.css' files.
+
+Link the generated 'style.css' into your web page, and copy the '.helix' container and its contents from the 'index.html' file into your web page to use the switcher.  Oh also remember to provide some images!
+
+WARNING: The script will overwrite any files with the same name.
+
+Demonstration at hackology.co.uk/helix
